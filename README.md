@@ -1,101 +1,9 @@
-# CodeGirls
-Evolução do aprendizado e entregas
-
-# O que são instâncias EC2
-
-**EC2 →** Amazon Elastic Compute Cloud (Computação Elástica na Nuvem da Amazon), um serviço da Amazon Web Services (AWS) que fornece servidores virtuais escaláveis e sob demanda, chamados de instâncias, para que desenvolvedores e empresas possam executar aplicações sem a necessidade de comprar e gerenciar hardware físico. 
-
-Composta por: CPU, Memória, Disco, Rede, Sitema operacional
-
-- Tipo de recuso IAAS, infraestrutura como serviço
-    - Responsabilidade pelos aplicativos, dados e conexões (gerência do recurso)
-- Escolher EC2 visando eficiência, escalabilidade e economia, dependendo da aplicação que será realizada
-- O EC2 nos fornece capacidade de computação na cloud da AWS
-- Pode definir segurança básica utilizando firewall icnorporada do AWS
-- Cada instância oferece diferentes recursos de computação
-- **Famílias de instâncias EC2**
-
-### Propósito das instâncias EC2
-- Verificar o valor da instância pelo AWS pricing calculator
-    https://aws.amazon.com/pt/aws-cost-management/aws-pricing-calculator/
-    https://aws.amazon.com/pt/ec2/
-    → Selecionar region → serviço (EC2) → tipo de locação → número de hosts → sistema operacional → carga de trabalho → número de instâncias (qtd de máquinas) → família de instância → cpu, memória e performance de rede
+# Code Girls
+Evolução e entregas
     
-    **Outras opções:** sob demanda, estâncias spot, instâncias reservadas padrão e instâncias reservadas conversíveis
-    
-### Convenção do nome
+# Aulas de Projetos
+# Aula 3 - Gerenciando Instâncias EC2 na AWS
 
-- Dentro da AWS há um módulo para contratar e configurar o EC2
-
-# Otimização de recursos
-
-- Otimização → poupar custos
-1. Desligar instâncias não utilizadas
-    - Não utilização durante a noite ou finais de semana → desligamento automático
-2. Remover recursos ociosos ou não utilizados
-3. Escalar recursos
-    - Scale de recursos para processar os workloads em determinados momentos
-    - Aumentar ou diminuir de forma manual ou automática
-
-      ⁉️
-    **workloads** é usado para se referir às demandas computacionais específicas impostas a uma aplicação, serviço ou recurso em um ambiente virtualizado
-    
-       
-    - **Vertical:** acrescentar ou diminuir a capacidade de um recurso em mesmo nó e geralmenta está relacionado ao poder computacional (CPU, memória, rede, storage etc.)
-    - **Horizontal:** aumentar o número de recursos (ex: adicionar disco rídico, adicionando instâncias, etc.)
-
-### Outras opções de otimização
-
-**Sob demanda** → são compradas a uma taxa fixa por hora e são recomendadas para aplicativos com cargas de trabalhos irregulares de curto prazo que não podem ser interrompidas
-
-→ Bastante utilizadas para testes ou desenvolvimento
-
-**Reservadas** → são mais baratas, mas precisa pagar o ano inteiro de uso, mesmo sem o uso
-
-# Amazon EBS
-
-- Amazon EBS Amazon Elastic Block Store é um serviço de armazenamento em blocos de alta performance da **Amazon Web Services** que fornece volumes de armazenamento persistente e escaláveis para serem usados com instâncias do Amazon EC2 Elastic Compute Cloud. Semelhante a um disco rígido físico, o EBS permite que você anexe esses volumes a instâncias, crie sistemas de arquivos, execute bancos de dados e armazene dados persistentes que permanecem mesmo quando a instância é desativada.
-- Capacidade de expansão de forma rápida
-- Parecido com um HD externo
-- Amazon EBS garante 99,999% de disponibilidade para seus volumes
-
-
-# Amazon S3
-
-- O Amazon S3 (Simple Storage Service) **é um serviço de armazenamento de objetos que permite guardar e recuperar qualquer quantidade de dados na internet de forma escalável, segura e com alto desempenho**. Ele é usado para data lakes, aplicativos nativos da nuvem, aplicativos móveis, sites e dados de IoT, oferecendo classes de armazenamento e recursos de gerenciamento de custos e acesso para atender a diversos requisitos de negócios e conformidade.
-- Permite o arquivamento de dados de longa duração, o gerenciamento de ativos de mídia e o armazenamento seguro de logs
-
-## Tipos de storage S3
-- S3 é um recurso com alta disponibilidade (99,999999999%)
-https://aws.amazon.com/pt/s3/storage-classes/
-
-→ Lamba function solicita pegar os dados do arquivo (pelo S3 glacier ou standard) dependendo de quantos dias o dado ficou sem consulta
-
-# Diferença entre os dois storages
-
-A principal diferença é que
-
-**o Amazon S3 é um armazenamento de objetos escalável e durável, ideal para dados não estruturados e backups, enquanto o Amazon EBS é armazenamento em bloco de alto desempenho e baixa latência**
-
-, parecido com um disco rígido, usado para sistemas operacionais, bancos de dados e aplicativos que exigem acesso rápido a dados em uma instância EC2.
-
-**Amazon S3 (Simple Storage Service)**
-
-- **Tipo de Armazenamento:** Armazenamento de objetos.
-- **Caso de Uso:** Armazenamento de dados não estruturados (como imagens, vídeos, backups), hospedagem de sites estáticos, e é ideal para grandes volumes de dados com escalabilidade ilimitada.
-- **Acesso:** Acessível via web e APIs, com um identificador exclusivo (chave) para cada objeto.
-- **Desempenho:** Geralmente mais lento que o EBS, com maior latência.
-- **Escalabilidade:** Altamente escalável, com durabilidade excelente.
-
-**Amazon EBS (Elastic Block Store)**
-
-- **Tipo de Armazenamento:** Armazenamento em bloco, onde dados são armazenados em blocos de tamanho fixo.
-- **Caso de Uso:** Ideal para anexar a instâncias Amazon EC2, servindo como o disco para um sistema operacional, banco de dados, ou para aplicativos que requerem alto desempenho e baixo latência.
-- **Acesso:** Acessível apenas por uma instância EC2 específica na qual está anexado.
-- **Desempenho:** Oferece alto desempenho e baixa latência, sendo a melhor opção para cargas de trabalho que exigem acesso rápido e frequente aos dados.
-- **Escalabilidade:** Menos escalável que o S3; o tamanho do volume é um limite.
-
-**Spot** → aplicação sob demanda com descontos de até 90%, porém a AWS pode encerrá-la a qualquer momento com um aviso de dois minutos
 # Criação e uso de imagens AMI
 
 Uma Amazon Machine Image (AMI) é um modelo pré-configurado que serve como a unidade básica para criar instâncias do servidor virtual no Amazon Elastic Compute Cloud (EC2). Ela contém todo o software necessário, como um sistema operacional, aplicações e configurações, para iniciar e executar instâncias na nuvem da Amazon Web Services (AWS). 
@@ -110,12 +18,18 @@ Uma Amazon Machine Image (AMI) é um modelo pré-configurado que serve como a un
 
 **Tipos de AMI:** amazon linux, windows entre outros, escolha a ami com base nos requisitos de aplicação e do sistema.
 
+![image.png](attachment:ac6e73b3-af10-4d51-ae49-6cc72647c942:image.png)
+
 # Snapshots EBS
 
 - Snapshots de Amazon EBS são **cópias incrementais e pontuais (para um determinado momento) dos dados em volumes do Amazon EBS, salvos no Amazon S3 para fins de backup, recuperação de desastres e migração de dados**. Eles capturam o estado completo de um volume em um instante e podem ser usados para criar novos volumes, restaurar dados ou servir como base para migrar dados entre diferentes regiões e contas da AWS.
 
+<aside>
 ⁉️
+
 Os snapshots podem ser guardados no S3
+
+</aside>
 
 - É um serviço de backup dos volumes do EBS em um determinado momento
     - É possível configurar a frequência com que os snapshots são tirados
@@ -123,6 +37,131 @@ Os snapshots podem ser guardados no S3
 - Para fins de recuperção de desastres, os instantâneos do EBS podem ser armazenados em uma região remota
 - Os valores dos snapshots depende da região
 
-AMI - Faz o backup de um servidor inteiro, incluindo todos os volumes
+**AMI**
+Faz o backup de um servidor inteiro, incluindo todos os volumes
 
-Snapshot - Faz uma cópia pontual de um determinado volume
+**Snapshot**
+Faz uma cópia pontual de um determinado volume
+
+![image.png](attachment:8ddfec2a-0420-4f47-8c0c-c87e1bd78299:image.png)
+
+# Projeto - Desafio Instâncias EC2
+
+![image.png](attachment:bed602dc-001e-43cd-898f-a357bb7cc14d:image.png)
+
+S3 → Lambda function
+
+EC2 → EBS
+
+## Projeto com EC2
+
+Imagine que terá 2 EBS, em um EBS (nuvem) uma pessoa irá colocar os arquivos
+
+EC2 lê o arquivo, processa e envia para outro EBS
+
+→ Se alimenta de um banco de dados RDS
+
+ e terá uma automação para que envie para outro EBS
+
+![image.png](attachment:a841cc13-a86c-4553-aae3-7c3d96d8b323:image.png)
+
+→ Adicionar flow ediction deixa a imagem interessante
+
+## Projeto com S3
+
+Toda vez que um ator madan um arquivo  pro S3 por meio de linha de comando
+
+S3 envia arquivo pro lambda processar e manda para o dynamo (automatização de rotinas)
+
+![image.png](attachment:dfcae799-1a22-48e9-a89a-c293f02f65f5:image.png)
+
+## Exemplos de desenhos
+
+![image.png](attachment:be467c98-4fd9-4da8-8faf-41575ff2e794:image.png)
+
+# Aula 4 - Explorando Workflows automatizados com AWS Step Functions
+
+# Documentos auxiliares
+
+https://aws.amazon.com/pt/step-functions/
+
+# Conhecendo o AWS Step Functions
+
+- Construtor visual para criar fluxos de trabalho
+- O AWS Step Functions **é um serviço visual sem servidor da AWS que orquestra fluxos de trabalho distribuídos, permitindo a criação de aplicativos complexos conectando diferentes serviços da AWS**
+- Utiliza um console gráfico para definir e visualizar etapas, gerenciando automaticamente a execução, o tratamento de erros e os retentativas para garantir a confiabilidade do aplicativo.
+- Usado para automatizar processos, orquestrar microsserviços, criar pipelines de dados e aprendizado de máquina, e integrar diversas funções e serviços em uma arquitetura escalável
+- Facilita a coordenação de aplicativos e microserviços
+- Ao criar um fluxo, pode ter os recursos criados ou não, para começar a trabalhar
+
+### Caso de uso
+
+![image.png](attachment:64853c8b-3bab-498e-96fb-33cb43512032:image.png)
+
+# Benefícios e Projeto Modelo no AWS Step Functions
+
+- Acessar Step Functions
+
+<aside>
+❓
+
+Funciona muito parecido com o **Power Automate**
+
+</aside>
+
+- Pode escolher um modelo automatizado
+    - O modelo consta a documentação com detalhes do flow
+- **Step Functions de exemplo:** Mapa distribuído para processar arquivos no S3
+- Há a visualização em design visual e, também, em código para alteração
+- Colocar algum flow para executar
+
+# Realizado validações no AWS Step Functions
+
+- Ao adicionar um novo step, você deve definir as configurações e parâmetros
+- Objetos que não foram criados antes da execução para serem aneados no fluxo de trabalho, são criados após a execução
+    - **Exemplo**: dentro do S3 foi criado arquivo csv que antes do fluxo não existiam
+- CloudWatch deixa visível os logs de execução do fluxo de trabalho
+
+# Criando e Executando Lambda no AWS Step Functions
+
+- Criar novo fluxo do zero
+    - Configurações da máquina
+        - Padrão
+- Adicionar Lambda function
+    - Criar uma function do 0 ou anexar uma já criada
+
+# Aula 3 - Implementando sua Primeira Stack com AWS CloudFormation
+
+# Documentos auxiliares
+
+https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/gettingstarted.walkthrough.html
+
+# O que é o AWS Cloudformation
+
+- AWS CloudFormation **é um serviço da AWS que permite modelar e provisionar infraestrutura na nuvem de forma automatizada, segura e repetível**
+- Utiliza arquivos de modelo (em formatos como JSON ou YAML) para descrever todos os recursos da AWS necessários para uma aplicação, como instâncias EC2, bancos de dados e balanceadores de carga
+    - Esses recursos são gerenciados como uma única unidade, chamada pilha (stack)
+- Processo que auxilia na automação de criação de recursos na AWS
+- Podemos usar templates quantas vezes quisermos e pagamentos apenas pelas stacks criadas (conjunto de recursos)
+
+![image.png](attachment:f6376a69-865f-472d-8129-3168d75e725a:image.png)
+
+## Exemplo de template
+
+![image.png](attachment:f8e7276e-5418-40fb-8c91-fa899faa0862:image.png)
+
+# Criando Stacks no AWS CloudFormation
+
+- Acessar CloudFormation
+- Criar stack
+    - Se quiser, a partir de template
+    - Ele disponibiliza a url do template
+    - Também é possível pegar os templates do repositório do Github
+- Possível utilizar por meio do VS
+
+# Criando stacks de firewall no CloudFormation
+
+- Criar stack com recurso importado (upload)
+    - Apache file
+
+![image.png](attachment:f970d2ae-d34e-41ef-af9b-d241d02fd856:image.png)
