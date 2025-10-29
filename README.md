@@ -104,7 +104,31 @@ https://aws.amazon.com/pt/step-functions/
 
 <aside>
 ❓
+# AWS Cloudformation
 
+- Serviço que facilita a modelagem e a configuração de recursos na AWS
+- Permite criar modelos e descrevem os recursos necessários, como instâncias EC2 ou banco de dados RDS, automatizando provisionamento e configuração
+- Elimina a necessidade de configurar recursos manualmente, permitindo focar no desenvolvimento e gestão de aplicativos
+
+# Benefícios do AWS Cloudformation e formatos para criação de modelos
+
+- Ajuda a automatizar o processo de criação, configuração e gerenciamento de recursos da AWS
+    - Implantação rápida confiável e repetida
+- Possível criar modelos padrão de pilhas de infraestrutura que podem ser usados para criar cópias idênticas
+- Ajuda a reduzir custos permitindo que os clientes usem modelos de infraestrutura existentes e os reutilizem em vários ambientes
+- Ajuda a garantir que todos os recursos da AWS sejam configurados com segurança usando políticas e regras de segurança
+
+![image.png](attachment:a1af9115-2d9f-4d83-b3e8-6049497cf470:image.png)
+
+- Suporta JSON e AML como formatos para o modelo (templates)
+
+# Acessando o AWS Cloudformation para criar uma Stack e a diferença entre o Terraform
+
+- Acessar AWS Cloudformation
+- Acessar infraestructure composer
+    - Pode criar ou utilizar um template já pronto de forma visual ou por código
+
+![image.png](attachment:919ba116-0a5f-4362-a620-e545b130c48f:image.png)
 Funciona muito parecido com o **Power Automate**
 
 </aside>
@@ -165,3 +189,107 @@ https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/gettingstar
     - Apache file
 
 ![image.png](attachment:f970d2ae-d34e-41ef-af9b-d241d02fd856:image.png)
+
+# Tarefas automatizadas com Amazon S3 e Lambda
+
+## Entendendo o Amazon S3
+
+- Serviço de armazenamento em nuvem
+- Permite armazenar e acessar dados de forma segura e esclável
+
+### Vantagens do S3
+
+1. Durabilidade → altamente confiável
+2. Disponibilidade → garante acesso contínuo
+3. Escalabilidade → ajusta automaticamente a capacidade de armazenamento
+4. Segurança → oferece criptografia, controle de acesso e monitoramento de atividades
+
+## Entendendo o AWS Lambda
+
+- Serviço de computação serveless que permite executar código em resposta a eventos, sem necessidade de gerenciar servidores
+- Upload do código → execução automática
+- Execução máxima de 15 minutos
+
+### Vantagens do Lambda
+
+1. Execução sob demanda → somente quando necessário
+2. Escalabilidade automática → ajusta capacidade automaticamente com base no numero de eventos
+3. Custo eficiente → cobra apenas pelot empo de execuação e pela quantidade de solicitações
+4. Integração com outros serviços AWS → funciona como um conector entre diversos serviços AWS
+
+# Upload de Arquivos com processamente e registro no DynamoDB
+
+- **Hands On**
+    
+    ![image.png](attachment:43583a6e-10c7-46b7-a94a-4527a5869e21:image.png)
+    
+    ![image.png](attachment:4d523d28-49b8-4368-bab0-6ad81f2a56e3:image.png)
+    
+- [ ]  Fazer desenho de infraestrutura utilizando o Lambda 1 de novembro de 2025
+
+# Configurando AWS localmente com LocalStack
+
+- Projeto OpenSource
+- LocalStack **é um emulador que simula serviços da AWS em sua máquina local**, permitindo que desenvolvedores criem e testem aplicativos na nuvem sem precisar de uma conexão com a nuvem real
+- Usa contêineres Docker para rodar serviços como S3, Lambda, DynamoDB, SQS e muitos outros, o que acelera o desenvolvimento, permite testes offline e evita custos durante o ciclo de desenvolvimento
+- Permite aos desenvolvedores economizar tempo e custos, especialmente em testes automatizados e em ambientes de integração contínua (CI/CD)
+
+**Serviços suportados:** Lamda, API Gateway, S3, DynamoDB, SNS, SQS, CloudFormation, entre outros
+
+https://docs.localstack.cloud/aws/getting-started/
+
+- Possível acessar pelo Docker desktop
+- Possível verificar se foi realizado o download corretamente pelo PowerShell
+- Requer o Python instalado para o Local Stack funcionar
+- [ ]  Testar funcionalidades de S3 e Lambda pelo Local Stack 1 de novembro de 2025
+
+# Criando recursos
+
+- Dentro do Power Shell
+    - Configurar credencias do Local Stack
+    - Criar bucket S3 para nota fiscais
+    - Criar tabela no DynamoDB com informações das notas fiscais
+    - Criar arquivo json (fake) da nota fiscal
+        - Pode fazer no VS
+    - Enviar arquivo para o S3
+        - Remover após realizar o teste de subida do arquivo
+    - Criar Lambda Function para processar notas fiscais
+    - Configurar o trigger e o evento do Lambda
+        - Importante configurar o tipo de arquivo que irá chegar, se terá algum sufixo ou prefixo
+
+# Trabalhando arquivos localmente com LocalStack
+
+- Acessar NoSQL Workbench
+    - Adicionar conexão com o DynamoDB
+- Fazer upload do arquivo de notas fiscais (teste) dentro do DynamoDB
+    - Verificar se o arquivo foi recebido com sucesso
+- Verificar logs da Lambda Function
+
+<aside>
+❓
+
+Tentar subir um arquivo com erro também é importante para entender se o Lambda está funcionando em sua totalidade
+
+</aside>
+
+- Criar API Gateway para receber requisições para o Lambda executar
+    - Atualizar código do Lambda
+
+<aside>
+❓
+
+**Postman** é outra ferramenta possível para realizar integração O Postman **é uma plataforma de colaboração para desenvolvimento e testes de APIs que permite aos desenvolvedores criar, compartilhar e testar APIs de forma mais fácil e rápida**
+
+Serve para simplificar o processo de comunicação entre diferentes partes de um sistema, oferecendo uma interface gráfica intuitiva para enviar requisições HTTP, visualizar as respostas e automatizar testes
+
+</aside>
+
+- Acessar Postman e configurar
+    - Verificar possibilidades do Postman
+    - No caso de uso, o Postman serve para inserir registros ou consultar
+
+# Estudo de caso
+
+![image.png](attachment:ef9f4bd0-e461-4e0e-b871-dc405ed5f728:image.png)
+
+-
